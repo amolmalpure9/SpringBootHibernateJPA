@@ -35,6 +35,7 @@ public class CustomerController {
 		});
 	}
 
+	// call as : localhost:8080/deleteCust?id=1
 	@DeleteMapping("deleteCust")
 	public void deleteCust(@RequestParam("id") int id) {
 		Optional<Customer> cust = customerRepository.findById(id);
@@ -46,6 +47,14 @@ public class CustomerController {
 	@PutMapping("updateCust")
 	public void updateCust(@RequestBody Customer customer) {
 		customerRepository.save(customer);
+	}
+
+	// to get the cust by name
+	// call as : localhost:8080/getByCustName?name=XYZ
+	@GetMapping("getByCustName")
+	public List<Customer> getCustByName(@RequestParam("name") String name) {
+		System.out.println("------------------------------------------------------------");
+		return customerRepository.findAllByName(name);
 	}
 
 }
