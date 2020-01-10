@@ -22,6 +22,25 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
 
+	/*
+	 Sample JSON request
+	 
+	 {
+	"name":"Monu",
+	"address":	
+		{
+			"flatNo":4,
+	 		"streetName":"XYZ"
+		},
+	"ofcAddress":	
+		{
+			"flatNo":90,
+	 		"streetName":"ABCD"
+		}
+}
+	 
+	 
+	 * */
 	@PostMapping("saveCust")
 	public void saveCust(@RequestBody Customer customer) {
 		System.out.println(customer.getName());
