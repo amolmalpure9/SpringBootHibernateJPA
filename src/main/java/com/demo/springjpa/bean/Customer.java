@@ -1,6 +1,9 @@
 package com.demo.springjpa.bean;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +19,19 @@ public class Customer {
 	@Column
 	private String name;
 
-	@Column
-	private String address;
+	@Embedded
+	private Address address;
 
-	public int getCustId() {
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "flatNo", column = @Column(name = "OFC_FLAT_NO")),
+			@AttributeOverride(name = "streetName", column = @Column(name = "OFC_STREET")) })
+	private Address ofcAddress;
+
+	public Integer getCustId() {
 		return custId;
 	}
 
-	public void setCustId(int custId) {
+	public void setCustId(Integer custId) {
 		this.custId = custId;
 	}
 
@@ -35,12 +43,20 @@ public class Customer {
 		this.name = name;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Address getOfcAddress() {
+		return ofcAddress;
+	}
+
+	public void setOfcAddress(Address ofcAddress) {
+		this.ofcAddress = ofcAddress;
 	}
 
 	@Override

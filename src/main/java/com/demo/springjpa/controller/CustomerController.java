@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.springjpa.bean.Customer;
+import com.demo.springjpa.bean.Address;
 import com.demo.springjpa.dao.CustomerRepository;
 
 @RestController
